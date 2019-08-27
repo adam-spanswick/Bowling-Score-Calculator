@@ -124,7 +124,9 @@ class CalculateScore:
         return sum(frame_scores)
 
 
-# Program will expect 10 'frames' entered as numbers of 'X' for a strike or '5/' for a spare (doesn't have to be 5)
+# When run the program will expect 10 "frames" entered as numbers or 'X' for a strike or '5/' for a spare
+# (doesn't have to be 5).
+# Ex: CalculateScore.py 45 54 36 27 9 63 81 18 90 72
 def main():
     frames = []
     for frame in sys.argv[1:]:
