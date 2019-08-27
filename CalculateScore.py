@@ -3,7 +3,8 @@
 # array however for a strike there would be a X and for a spare there would be a /. To accommodate this the program
 # checks if the frame is a X, an integer or if / is present in the frame and calculates the score accordingly. After it
 # calculates the score it will print the frames and the final score.
-
+import sys
+import json
 
 class CalculateScore:
     frames = []
@@ -122,6 +123,24 @@ class CalculateScore:
         # Sum up all the individual frames scores and return the final score.
         return sum(frame_scores)
 
+
+# Program will expect 10 'frames' entered as numbers of 'X' for a strike or '5/' for a spare (doesn't have to be 5)
+def main():
+    frames = []
+    for frame in sys.argv[1:]:
+        if isinstance(frame, str) and 'X' not in frame and '/' not in frame:
+            frames.append(int(frame))
+        elif 'X' or '/' in frame:
+            frames.append(frame)
+
+    game = CalculateScore(frames)
+    print(frames)
+    print("Game Score: " + str(game.get_final_score()))
+    print()
+
+
+if __name__ == "__main__":
+    main()
 
 # Score = 300
 frames1 = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'XXX']
